@@ -1,0 +1,67 @@
+"""Θέμα 10
+
+Γράψτε ένα πρόγραμμα το οποίο θα εκτελεί ορθογραφικό έλεγχο σε ένα κείμενο χρησιμοποιώντας bloom filters. Πάρτε τον κώδικα από εδώ http://www.maxburstein.com/blog/creating-a-simple-bloom-filter/ ώστε να μπορείτε να ελένξετε γρήγορα αν μία λέξη ανήκει σε ένα λεξικό ή όχι.
+
+Το πρόγραμμα σας θα παίρνει σαν είσοδο ένα αρχείο το οποίο έχει αγγλικό κείμενο και θα ελέγχει κάθε λέξη του αν ανήκει στο λεξικό ή όχι. Κάθε λέξη που δεν εμφανίζεται στο λεξικό εμφανίζεται στην έξοδο με -- στην αρχή και το τέλος.
+
+Παράδειγμα:
+
+Αρχείο εισόδου: 
+
+This is a text tht I want to chack if it is corect. If nottt, show me the mistakes.
+
+Έξοδος προγράμματος:
+
+This is a text --tht-- I want to --chack-- if it is --corect--. If --nottt--, show me the mistakes. 
+
+Για διευκόλυνση το κείμενο μπορεί να μην έχει σημεία στίξης."""
+
+# class of Bloomfilter
+from bitarray import bitarray
+import mmh3
+
+class BloomFilter:
+    
+    def __init__(self, size, hash_count):
+        self.size = size
+        self.hash_count = hash_count
+        self.bit_array = bitarray(size)
+        self.bit_array.setall(0)
+        
+    def add(self, string):
+        for seed in xrange(self.hash_count):
+            result = mmh3.hash(string, seed) % self.size
+            self.bit_array[result] = 1
+            
+    def lookup(self, string):
+        for seed in xrange(self.hash_count):
+            result = mmh3.hash(string, seed) % self.size
+            if self.bit_array[result] == 0:
+            value = 0
+            else: value = 1
+
+bf = BloomFilter(500000, 7)
+
+lines = open("american-english.txt").read().splitlines()
+for line in lines:
+    bf.add(line)
+    
+    
+#Check the file
+
+anytext = raw_input("Please input the txt file you want to check:")
+
+txt_File = open("anytext").read().splitlines()
+for line in txt_File
+    bf.lookup(line)
+       if value = 0:
+	     new_txt = open("NewAnyText.txt","a")
+	     new_txt.write("--")
+	     new_txt.write(line)
+	     new_txt.write("--")
+	     new_txt.close()
+	     else: 
+	     new_txt = open("NewAnyText.txt","a")
+	     new_txt.write(line)
+	     new_txt.close
+print new_txt
