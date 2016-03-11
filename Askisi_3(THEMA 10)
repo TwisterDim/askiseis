@@ -1,9 +1,9 @@
 """Θέμα 10
-
-Γράψτε ένα πρόγραμμα το οποίο θα εκτελεί ορθογραφικό έλεγχο σε ένα κείμενο χρησιμοποιώντας bloom filters. Πάρτε τον κώδικα από εδώ http://www.maxburstein.com/blog/creating-a-simple-bloom-filter/ ώστε να μπορείτε να ελένξετε γρήγορα αν μία λέξη ανήκει σε ένα λεξικό ή όχι.
-
-Το πρόγραμμα σας θα παίρνει σαν είσοδο ένα αρχείο το οποίο έχει αγγλικό κείμενο και θα ελέγχει κάθε λέξη του αν ανήκει στο λεξικό ή όχι. Κάθε λέξη που δεν εμφανίζεται στο λεξικό εμφανίζεται στην έξοδο με -- στην αρχή και το τέλος.
-
+Γράψτε ένα πρόγραμμα το οποίο θα εκτελεί ορθογραφικό έλεγχο σε ένα κείμενο χρησιμοποιώντας bloom filters. 
+Πάρτε τον κώδικα από εδώ http://www.maxburstein.com/blog/creating-a-simple-bloom-filter/ ώστε να μπορείτε να ελένξετε γρήγορα αν μία 
+λέξη ανήκει σε ένα λεξικό ή όχι.
+Το πρόγραμμα σας θα παίρνει σαν είσοδο ένα αρχείο το οποίο έχει αγγλικό κείμενο και θα ελέγχει κάθε λέξη του αν ανήκει στο λεξικό ή όχι. 
+Κάθε λέξη που δεν εμφανίζεται στο λεξικό εμφανίζεται στην έξοδο με -- στην αρχή και το τέλος.
 Παράδειγμα:
 
 Αρχείο εισόδου: 
@@ -52,17 +52,15 @@ for line in lines:
 anytext = raw_input("Please input the txt file you want to check:")
 
 txt_File = open("anytext").read().splitlines()
-for line in txt_File
-    bf.lookup(line)
-       if value = 0:
-	     new_txt = open("NewAnyText.txt","a")
+new_txt_File = open("NewAnyText.txt","a")
+  for line in txt_File
+       bf.lookup(line)
+            if value = 0:
 	     new_txt.write("--")
 	     new_txt.write(line)
 	     new_txt.write("--")
-	     new_txt.close()
 	     else: 
-	     new_txt = open("NewAnyText.txt","a")
 	     new_txt.write(line)
-	     new_txt.close
+new_txt_File.close()	     
 txt_File.close()
 print new_txt
