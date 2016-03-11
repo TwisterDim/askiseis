@@ -1,0 +1,66 @@
+"""Θέμα 5
+Χωρίς να χρησιμοποιήσετε τις βιβλιοθήκες για ημερομηνίες της Python, υλοποιήστε ένα πρόγραμμα το οποίο παίρνει σαν είσοδο
+μία ημερομηνία στη μορφή dd/mm/yyyy και επιστρέφει το τι μέρα (Κυριακή, Δευτέρα κτλ) είναι εκείνη η ημερομηνία."""
+
+import string
+dayName={0:"Sunday",1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday"}
+
+date = raw_input("Please input a date with this form (DD/MM/YYYY):  ")
+dd,mm,yyyy = string.split(date,"/")
+dd = int(dd)
+mm = int(mm)
+yyyy = int(yyyy)
+
+# Calculate the doomsday of the year
+YY = yyyy/100
+yy= yyyy%100
+A = yy/12
+B = yy%12
+C = B/4
+
+
+   
+if YY%4 == 0:
+ AnchorDay = 2
+elif YY%4 == 1:
+ AnchorDay = 0
+elif YY%4 == 2:
+ AnchorDay = 5
+else:
+ AnchorDay = 3
+   
+sum = A+B+C+AnchorDay
+DoomsDayYear = sum%7
+
+#leap year
+if (yy)%4==0:
+  leap=1
+else:
+  leap= 0
+
+
+  
+# Calculate the given date
+if mm == 1:
+  if leap ==1:
+    if dd>4: DoomsDay=((dd-4)%7 + DoomsDayYear)%7
+    else:    Doomsday=((4-dd) + DoomsDayYear)%7
+else:
+    if dd>3:  DoomsDay=((dd-3)%7 + DoomsDayYear)%7
+    else:  DoomsDay= ((3-dd) + DoomsDayYear)%7
+if mm == 2:
+   if leap==1:  DoomsDay=((29-dd)%7 + DoomsDayYear)%7
+else:   DoomsDay=((28-dd)%7 + DoomsDayYear)%7
+if mm == 3:
+   if dd>7:  DoomsDay=((dd-7)%7 + DoomsDayYear)%7
+   else:     DoomsDay=((7-dd)%7 + DoomsDayYear)%7
+if mm==4:
+   if dd>4:  DoomsDay=((dd-4)%7 + DoomsDayYear)%7
+   else:     DoomsDay=((4-dd)%7 + DoomsDayYear)%7
+if mm==5:
+    if dd>9:  DoomsDay=((dd-9)%7 + DoomsDayYear)%7
+    else:   DoomsDay=((9-dd)%7 + DoomsDayYear)%7
+if mm==6:
+    if dd>7:  DoomsDay=((dd-6)%7 + DoomsDayYear)%7
+    else:   DoomsDay=((6-dd) + DoomsDayYear)%7
+print dayName[DoomsDay]
