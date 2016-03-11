@@ -1,0 +1,29 @@
+"""Θέμα 6
+
+Χρησιμοποιήστε τα web services του ΟΠΑΠ για να βγάλετε στατιστικά για το ΚΙΝΟ μια συγκεκριμένης ημερομηνίας. 
+Το πρόγραμμα παίρνει από το χρήστη μία ημερομηνία στη μορφή dd-MM-yyyy και συνδέεται με την διεύθυνση:
+
+http://applications.opap.gr/DrawsRestServices/kino/drawDate/ΗΜΕΡΟΜΗΝΙΑ.json
+
+για να πάρει τις κληρώσεις της ημέρας. Στη συνέχεια εμφανίζει στατιστικά όπου έχουν την μορφή:
+
+αριθμός: πλήθος εμφανίσεων."""
+
+import urllib2
+import json
+b = raw_input("Please input a date with this form (DD-MM-YYYY):  ")
+a = "http://applications.opap.gr/DrawsRestServices/kino/drawDate/%s.json" % (b)
+
+json_file = urllib2.urlopen(a).read()
+content = json.loads(json_file) 
+content = content['draws']['draw']
+i = len(content)
+arithmoi = []
+
+for j in range(i):
+      arithmoi = arithmoi +  content[j]['results']
+	  
+
+for k in range(80):	 
+    k = k+1 
+    print k,':',arithmoi.count(k)
