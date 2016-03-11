@@ -56,11 +56,11 @@ new_txt_File = open("NewAnyText.txt","a")
   for line in txt_File
        bf.lookup(line)
             if value = 0:
-	     new_txt.write("--")
-	     new_txt.write(line)
-	     new_txt.write("--")
+	     new_txt_File.write("--")
+	     new_txt_File.write(line)
+	     new_txt_File.write("--")
 	     else: 
-	     new_txt.write(line)
+	     new_txt_File.write(line)
 new_txt_File.close()	     
 txt_File.close()
 print new_txt
