@@ -64,4 +64,5 @@ for line in txt_File
 	     new_txt = open("NewAnyText.txt","a")
 	     new_txt.write(line)
 	     new_txt.close
+txt_File.close()
 print new_txt
